@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Serif+Display&display=swap');
+
+.HeaderArea {
+    position: relative;
+    top: 0;
+    width: 100vw;
+    height: 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* ← centers horizontally */
+    padding: 0 24px;
+}
+
+.landingPageHeader {
+    font-family: 'DM Serif Display', serif;
+    font-size: 64px;
+    color: rgb(7, 7, 7);
+    margin: 0;
+}
