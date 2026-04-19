@@ -33,7 +33,7 @@ function LoginForm() {
                         />
                     </div>
 
-                    <button type="submit" className="lf-btn-primary">Sign in</button>
+                    <button type="submit" className="lf-btn-primary" onClick={ () => navigate('/home')}>Sign in</button>
                 </form>
 
                 <p className="lf-signup-text">

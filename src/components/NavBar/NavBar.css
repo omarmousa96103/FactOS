@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Serif+Display&display=swap');
+
+.nb-wrap {
+    font-family: 'Sora', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 60px;
+    background: #fff;
+    border-bottom: 0.5px solid #e5e7eb;
+}
+
+.nb-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #111827;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.nb-logo span { color: #1D9E75; }
+
+.nb-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nb-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: #6b7280;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s;
+    position: relative;
+}
+
+.nb-link:hover { color: #111827; }
+
+/* Subtle underline on hover */
+.nb-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: #1D9E75;
+    transition: width 0.2s ease;
+}
+
+.nb-link:hover::after { width: 100%; }
+
+.nb-btn {
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    background: #1D9E75;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.nb-btn:hover { background: #0F6E56; }
+.nb-btn:active { transform: scale(0.98); }
+
+@media (max-width: 768px) {
+    .nb-wrap { padding: 0 1.25rem; }
+    .nb-links { gap: 1.25rem; }
+}
