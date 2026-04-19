@@ -1,0 +1,12 @@
+.hp-body {
+    display: flex;
+    align-items: flex-start;
+    min-height: calc(100vh - 96px);
+    background: #f9fafb;
+}
+
+.hp-main {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    min-width: 0;
+}
