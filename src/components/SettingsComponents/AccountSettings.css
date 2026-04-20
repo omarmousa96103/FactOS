@@ -1,0 +1,83 @@
+.as-wrap { max-width: 560px; }
+
+.as-avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.25rem;
+}
+
+.as-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #0a2e22;
+    color: #1D9E75;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    flex-shrink: 0;
+}
+
+.as-avatar-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+    margin: 0 0 4px;
+    font-family: 'Sora', sans-serif;
+}
+
+.as-avatar-btn {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    color: #1D9E75;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.as-avatar-btn:hover { text-decoration: underline; }
+
+.as-danger-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff5f5;
+    border: 0.5px solid #fecaca;
+    border-radius: 10px;
+    padding: 14px 16px;
+    gap: 1rem;
+}
+
+.as-danger-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #991b1b;
+    margin: 0 0 3px;
+    font-family: 'Sora', sans-serif;
+}
+
+.as-danger-sub {
+    font-size: 12px;
+    color: #b91c1c;
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+}
+
+.as-danger-btn {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    background: #E24B4A;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+.as-danger-btn:hover { background: #c53030; }

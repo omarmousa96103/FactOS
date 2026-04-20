@@ -1,0 +1,14 @@
+.fcp-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    background: #f9fafb;
+}
+
+.fcp-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 3rem;
+}

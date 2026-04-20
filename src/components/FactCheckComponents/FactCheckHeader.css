@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Serif+Display&display=swap');
+
+.fch-wrap {
+    font-family: 'Sora', sans-serif;
+    background: #fff;
+    border-bottom: 0.5px solid #e5e7eb;
+    padding: 1.5rem 3rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.fch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #085041;
+    background: #E1F5EE;
+    padding: 4px 12px;
+    border-radius: 99px;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+}
+
+.fch-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1D9E75;
+    animation: fch-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes fch-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+.fch-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: #111827;
+    margin: 0 0 6px;
+    font-weight: 400;
+}
+
+.fch-sub {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+}

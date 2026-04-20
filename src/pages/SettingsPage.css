@@ -1,0 +1,13 @@
+.setp-body {
+    display: flex;
+    align-items: flex-start;
+    min-height: calc(100vh - 60px);
+    background: #fff;
+}
+
+.setp-main {
+    flex: 1;
+    padding: 2.5rem 3rem;
+    min-width: 0;
+    background: #fff;
+}

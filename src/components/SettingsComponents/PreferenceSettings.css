@@ -1,0 +1,28 @@
+.ps-wrap { max-width: 560px; }
+
+.ps-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ps-chip {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    background: #f3f4f6;
+    border: 0.5px solid transparent;
+    border-radius: 99px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ps-chip:hover { background: #e5e7eb; color: #111827; }
+
+.ps-chip.active {
+    background: #E1F5EE;
+    color: #085041;
+    border-color: #1D9E75;
+}

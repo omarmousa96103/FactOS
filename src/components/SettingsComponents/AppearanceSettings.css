@@ -1,0 +1,78 @@
+.aps-wrap { max-width: 560px; }
+
+.aps-theme-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.aps-theme-btn {
+    font-family: 'Sora', sans-serif;
+    background: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    text-align: center;
+    width: 120px;
+}
+
+.aps-theme-btn.active { border-color: #1D9E75; }
+
+.aps-theme-preview {
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 8px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.aps-preview--light { background: #f9fafb; border: 0.5px solid #e5e7eb; }
+.aps-preview--dark  { background: #111827; border: 0.5px solid #374151; }
+
+.aps-preview-bar {
+    height: 8px;
+    border-radius: 3px;
+    background: #1D9E75;
+    width: 60%;
+}
+
+.aps-preview-line {
+    height: 6px;
+    border-radius: 3px;
+    background: #d1d5db;
+    width: 90%;
+}
+
+.aps-preview--dark .aps-preview-line { background: #374151; }
+
+.aps-preview-line.short { width: 60%; }
+
+.aps-theme-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.aps-size-row {
+    display: flex;
+    gap: 8px;
+}
+
+.aps-size-btn {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    background: #f3f4f6;
+    border: 0.5px solid transparent;
+    border-radius: 8px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.aps-size-btn:hover { background: #e5e7eb; color: #111827; }
+.aps-size-btn.active { background: #E1F5EE; color: #085041; border-color: #1D9E75; }

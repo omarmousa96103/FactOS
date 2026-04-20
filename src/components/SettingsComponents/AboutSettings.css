@@ -1,0 +1,50 @@
+.abs-wrap { max-width: 560px; }
+
+.abs-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 0.5px solid #f3f4f6;
+    font-family: 'Sora', sans-serif;
+}
+
+.abs-info-row:last-child { border-bottom: none; }
+
+.abs-info-label {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.abs-info-val {
+    font-size: 13px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.abs-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.abs-link {
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    color: #1D9E75;
+    text-decoration: none;
+    padding: 9px 0;
+    border-bottom: 0.5px solid #f3f4f6;
+    transition: color 0.15s;
+}
+
+.abs-link:last-child { border-bottom: none; }
+.abs-link:hover { color: #0F6E56; text-decoration: underline; }
+
+.abs-mission {
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.75;
+    margin: 0;
+}
