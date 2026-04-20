@@ -1,0 +1,43 @@
+.qf-wrap {
+    position: sticky;
+    top: 117px;
+    z-index: 89;
+    background: #fff;
+    border-bottom: 0.5px solid #e5e7eb;
+    padding: 10px 3rem;
+}
+
+.qf-chips {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.qf-chips::-webkit-scrollbar { display: none; }
+
+.qf-chip {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    background: #f3f4f6;
+    border: 0.5px solid transparent;
+    border-radius: 99px;
+    padding: 5px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+}
+
+.qf-chip:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.qf-chip.active {
+    background: #E1F5EE;
+    color: #085041;
+    border-color: #1D9E75;
+}
