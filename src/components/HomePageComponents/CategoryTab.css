@@ -27,3 +27,11 @@
     color: #1D9E75;
     border-bottom: 2px solid #1D9E75;
 }
+
+
+.ct-wrap {
+    background: var(--nav-bg);
+    border-color: var(--border);
+}
+.ct-tab { color: var(--text-secondary); }
+.ct-tab:hover { color: var(--text-primary); }

@@ -1,5 +1,11 @@
 import './StarterPrompts.css'
-import { starterPrompts } from '../../pages/data/mockResponses'
+
+const starterPrompts = [
+    'Is it true that gold prices are rising?',
+    'Fact-check: Lebanon won the FibaWc',
+    'Is Drake dropping a new album soon?',
+    'Did Barcelona beat Inter Milan?',
+]
 
 function StarterPrompts({ onSelect }) {
     return (

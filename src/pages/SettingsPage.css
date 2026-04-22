@@ -11,3 +11,5 @@
     min-width: 0;
     background: #fff;
 }
+.setp-body  { background: var(--bg-primary); }
+.setp-main  { background: var(--bg-primary); }

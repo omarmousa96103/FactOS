@@ -1,10 +1,11 @@
 import NavBar from '../components/NavBar/NavBar'
 import './AboutUsPage.css'
+import omarImg from '../assets/Omar.jpg'
 
 const socials = [
     { label: 'GitHub',    url: 'https://github.com/omarmousa96103',    icon: 'GH' },
     { label: 'LinkedIn',  url: 'https://linkedin.com/in/omarmousa96103', icon: 'LI' },
-    { label: 'Instagram', url: 'https://instagram.com/0moussa',  icon: 'IG' },
+    { label: 'Instagram', url: 'https://instagram.com/0moussa3',  icon: 'IG' },
 ]
 
 function AboutPage() {
@@ -17,7 +18,7 @@ function AboutPage() {
                 <div className="ab-hero">
                     <div className="ab-img-wrap">
                         <img
-                            src="/omar.jpg"
+                            src={omarImg}
                             alt="Omar Mousa"
                             className="ab-img"
                             onError={(e) => {

@@ -2,40 +2,39 @@ import { useState } from 'react'
 import NavBar from '../components/NavBar/NavBar'
 import FactCheckHeader from '../components/FactCheckComponents/FactCheckHeader'
 import ChatWindow from '../components/FactCheckComponents/ChatWindow'
-import { mockResponses, fallbackResponse } from './data/mockResponses'
+import { api } from '../api'
 import './FactCheckPage.css'
-
-function getAIResponse(query) {
-    const lower = query.toLowerCase()
-    const match = mockResponses.find((r) =>
-        r.keywords.some((kw) => lower.includes(kw))
-    )
-    return match || fallbackResponse
-}
 
 function FactCheckPage() {
     const [messages, setMessages] = useState([
         {
-            id: 0,
-            role: 'ai',
-            text: "Hello! I'm FactOS AI. Send me any claim or headline and I'll verify it against trusted sources for you.",
-            status: null,
+            id:          0,
+            role:        'ai',
+            text:        "Hello! I'm FactOS AI. Send me any claim or headline and I'll verify it against trusted sources for you.",
+            status:      null,
             statusClass: null,
-            time: 'Just now',
+            time:        'Just now',
         },
     ])
-    const [input, setInput] = useState('')
+    const [input, setInput]       = useState('')
     const [isTyping, setIsTyping] = useState(false)
 
     const getTime = () =>
         new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
-    const sendMessage = (text) => {
+    const getStatusClass = (verdict) => {
+        if (verdict === 'Confirmed') return 's-confirmed'
+        if (verdict === 'False')     return 's-false'
+        if (verdict === 'Rumored')   return 's-rumor'
+        return 's-rumor'
+    }
+
+    const sendMessage = async (text) => {
         const trimmed = text.trim()
         if (!trimmed) return
 
         setMessages((prev) => [...prev, {
-            id: Date.now(),
+            id:   Date.now(),
             role: 'user',
             text: trimmed,
             time: getTime(),
@@ -43,18 +42,30 @@ function FactCheckPage() {
         setInput('')
         setIsTyping(true)
 
-        setTimeout(() => {
-            const { response, status, statusClass } = getAIResponse(trimmed)
-            setIsTyping(false)
+        try {
+            const result = await api.factCheck(trimmed)
             setMessages((prev) => [...prev, {
-                id: Date.now() + 1,
-                role: 'ai',
-                text: response,
-                status,
-                statusClass,
-                time: getTime(),
+                id:          Date.now() + 1,
+                role:        'ai',
+                text:        result.explanation,
+                status:      result.verdict,
+                statusClass: getStatusClass(result.verdict),
+                confidence:  result.confidence,
+                sources:     result.sources,
+                time:        getTime(),
             }])
-        }, 1500)
+        } catch (err) {
+            setMessages((prev) => [...prev, {
+                id:          Date.now() + 1,
+                role:        'ai',
+                text:        'Something went wrong. Please try again.',
+                status:      null,
+                statusClass: null,
+                time:        getTime(),
+            }])
+        } finally {
+            setIsTyping(false)
+        }
     }
 
     return (

@@ -113,3 +113,12 @@
 }
 
 .sf-login-link:hover { text-decoration: underline; }
+
+.sf-error {
+    font-size: 13px;
+    color: #E24B4A;
+    background: #FCEBEB;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 1rem;
+}

@@ -80,3 +80,38 @@
     .nb-wrap { padding: 0 1.25rem; }
     .nb-links { gap: 1.25rem; }
 }
+
+.nb-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.nb-username {
+    font-size: 13px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.nb-btn--logout {
+    background: transparent;
+    color: #6b7280;
+    border: 0.5px solid #e5e7eb;
+}
+
+.nb-btn--logout:hover {
+    background: #FCEBEB;
+    color: #E24B4A;
+    border-color: #E24B4A;
+}
+
+.nb-wrap {
+    background: var(--nav-bg);
+    border-bottom: 0.5px solid var(--border);
+}
+
+.nb-logo { color: var(--text-primary); }
+.nb-link { color: var(--text-secondary); }
+.nb-link:hover { color: var(--text-primary); }
+.nb-username { color: var(--text-primary); }

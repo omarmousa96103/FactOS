@@ -1,29 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Serif+Display&display=swap');
 
-.lf-wrap {
+.lf-page {
     font-family: 'Sora', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     min-height: 100vh;
+}
+
+/* ── Left panel ── */
+.lf-left {
+    background: #0a2e22;
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lf-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: #fff;
+    margin: 0 0 3rem;
+}
+.lf-logo span { color: #1D9E75; }
+
+.lf-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: #fff;
+    line-height: 1.35;
+    margin: 0 0 1rem;
+    font-weight: 400;
+}
+
+.lf-desc {
+    font-size: 14px;
+    color: #9FE1CB;
+    line-height: 1.75;
+    margin: 0 0 2.5rem;
+    max-width: 340px;
+}
+
+.lf-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lf-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #9FE1CB;
+}
+
+.lf-pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1D9E75;
+    flex-shrink: 0;
+}
+
+.lf-trusted {
+    font-size: 12px;
+    color: #5DCAA5;
+    margin: 0;
+}
+
+/* ── Right panel ── */
+.lf-right {
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 4rem 3rem;
 }
 
-.lf-card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
+.lf-form-wrap {
     width: 100%;
-    max-width: 400px;
+    max-width: 380px;
 }
 
-/* Header */
 .lf-title {
     font-family: 'DM Serif Display', serif;
     font-size: 28px;
     color: #111827;
     margin: 0 0 4px;
+    font-weight: 400;
 }
 
 .lf-subtitle {
@@ -32,16 +97,21 @@
     margin: 0 0 2rem;
 }
 
-.lf-brand {
-    color: #1D9E75;
-    font-weight: 500;
+.lf-brand { color: #1D9E75; font-weight: 500; }
+
+.lf-error {
+    font-size: 13px;
+    color: #E24B4A;
+    background: #FCEBEB;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 1rem;
 }
 
-/* Fields */
 .lf-form {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.1rem;
 }
 
 .lf-field {
@@ -57,7 +127,7 @@
 }
 
 .lf-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: #374151;
 }
@@ -67,7 +137,6 @@
     color: #1D9E75;
     text-decoration: none;
 }
-
 .lf-forgot:hover { text-decoration: underline; }
 
 .lf-input {
@@ -80,18 +149,19 @@
     padding: 10px 14px;
     outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .lf-input:focus {
     border-color: #1D9E75;
-    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.12);
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.1);
     background: #fff;
 }
 
 .lf-input::placeholder { color: #9ca3af; }
 
-/* Submit button */
-.lf-btn-primary {
+.lf-btn {
     font-family: 'Sora', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -100,26 +170,34 @@
     border: none;
     border-radius: 8px;
     padding: 11px;
-    margin-top: 4px;
+    margin-top: 6px;
     cursor: pointer;
+    width: 100%;
     transition: background 0.15s, transform 0.1s;
 }
 
-.lf-btn-primary:hover { background: #0F6E56; }
-.lf-btn-primary:active { transform: scale(0.98); }
+.lf-btn:hover { background: #0F6E56; }
+.lf-btn:active { transform: scale(0.98); }
+.lf-btn:disabled { background: #9ca3af; cursor: not-allowed; }
 
-/* Sign up row */
-.lf-signup-text {
+.lf-switch {
     text-align: center;
     font-size: 13px;
     color: #6b7280;
     margin: 1.5rem 0 0;
 }
 
-.lf-signup-link {
+.lf-switch a {
     color: #1D9E75;
     font-weight: 500;
     text-decoration: none;
+    cursor: pointer;
 }
+.lf-switch a:hover { text-decoration: underline; }
 
-.lf-signup-link:hover { text-decoration: underline; }
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .lf-page { grid-template-columns: 1fr; }
+    .lf-left { display: none; }
+    .lf-right { padding: 3rem 1.5rem; }
+}

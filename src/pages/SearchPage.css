@@ -9,4 +9,7 @@
     flex: 1;
     padding: 1.5rem 2rem;
     min-width: 0;
+
+    display: flex;
+    flex-direction: column;
 }

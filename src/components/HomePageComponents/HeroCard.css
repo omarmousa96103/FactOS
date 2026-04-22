@@ -7,18 +7,34 @@
     margin-bottom: 1.5rem;
 }
 
-.hc-image-placeholder {
+.hc-image-wrap {
+    position: relative;
     width: 100%;
-    height: 220px;
-    background: #f3f4f6;
-    display: flex;
-    align-items: flex-start;
-    padding: 14px;
-    box-sizing: border-box;
+    height: 240px;
+    overflow: hidden;
+}
+
+.hc-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.hc-wrap:hover .hc-image { transform: scale(1.02); }
+
+.hc-image-fallback {
+    width: 100%;
+    height: 100%;
     background: linear-gradient(135deg, #e1f5ee 0%, #f0fdf8 100%);
 }
 
-.hc-badge {
+.hc-image-wrap .hc-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
     font-size: 11px;
     font-weight: 500;
     padding: 3px 10px;
@@ -26,43 +42,41 @@
     letter-spacing: 0.04em;
 }
 
-.cat-sport   { background: #E1F5EE; color: #085041; }
-.cat-world   { background: #E6F1FB; color: #0C447C; }
-.cat-celeb   { background: #FAEEDA; color: #633806; }
-.cat-econ    { background: #EAF3DE; color: #27500A; }
-.cat-politics{ background: #EEEDFE; color: #3C3489; }
-.cat-fashion { background: #FBEAF0; color: #72243E; }
+.cat-sport    { background: #E1F5EE; color: #085041; }
+.cat-world    { background: #E6F1FB; color: #0C447C; }
+.cat-celeb    { background: #FAEEDA; color: #633806; }
+.cat-econ     { background: #EAF3DE; color: #27500A; }
+.cat-politics { background: #EEEDFE; color: #3C3489; }
+.cat-fashion  { background: #FBEAF0; color: #72243E; }
+.cat-general  { background: #F1EFE8; color: #444441; }
 
 .hc-body { padding: 1.25rem 1.5rem 1.5rem; }
 
-.hc-meta {
+.hc-sources-row {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 12px;
 }
 
-.hc-source {
-    font-size: 12px;
+.hc-source-tag {
+    font-size: 11px;
     font-weight: 500;
     color: #1D9E75;
+    background: #E1F5EE;
+    padding: 2px 8px;
+    border-radius: 99px;
 }
 
-.hc-dot {
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: #d1d5db;
-}
-
-.hc-time {
-    font-size: 12px;
+.hc-source-more {
+    font-size: 11px;
     color: #9ca3af;
+    padding: 2px 4px;
 }
 
 .hc-headline {
     font-family: 'DM Serif Display', serif;
-    font-size: 22px;
+    font-size: 20px;
     color: #111827;
     line-height: 1.4;
     margin: 0 0 10px;
@@ -74,12 +88,18 @@
     color: #6b7280;
     line-height: 1.75;
     margin: 0 0 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .hc-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .hc-status {
@@ -98,12 +118,23 @@
     border-radius: 50%;
 }
 
-.s-confirmed { background: #E1F5EE; color: #085041; }
-.s-confirmed .hc-status-dot { background: #1D9E75; }
-.s-rumor     { background: #FAEEDA; color: #633806; }
-.s-rumor     .hc-status-dot { background: #EF9F27; }
-.s-false     { background: #FCEBEB; color: #791F1F; }
-.s-false     .hc-status-dot { background: #E24B4A; }
+.s-confirmed                 { background: #E1F5EE; color: #085041; }
+.s-confirmed .hc-status-dot  { background: #1D9E75; }
+.s-rumor                     { background: #FAEEDA; color: #633806; }
+.s-rumor .hc-status-dot      { background: #EF9F27; }
+.s-false                     { background: #FCEBEB; color: #791F1F; }
+.s-false .hc-status-dot      { background: #E24B4A; }
+
+.hc-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hc-time {
+    font-size: 12px;
+    color: #9ca3af;
+}
 
 .hc-btn {
     font-family: 'Sora', sans-serif;
@@ -116,9 +147,16 @@
     padding: 7px 14px;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
 }
 
 .hc-btn:hover {
     background: #1D9E75;
     color: #fff;
 }
+.hc-wrap {
+    background: var(--card-bg);
+    border-color: var(--border);
+}
+.hc-headline { color: var(--text-primary); }
+.hc-summary  { color: var(--text-secondary); }

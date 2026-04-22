@@ -10,3 +10,20 @@
     padding: 1.5rem 2rem;
     min-width: 0;
 }
+.hp-status {
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    color: #9ca3af;
+    text-align: center;
+    padding: 3rem;
+}
+
+.hp-error {
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    color: #E24B4A;
+    background: #FCEBEB;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+.hp-body { background: var(--bg-secondary); }
