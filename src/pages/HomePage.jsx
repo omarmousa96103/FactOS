@@ -6,29 +6,22 @@ import Sidebar from '../components/HomePageComponents/Sidebar'
 import HeroCard from '../components/HomePageComponents/HeroCard'
 import NewsGrid from '../components/HomePageComponents/NewsGrid'
 import { api } from '../api'
+import { useAuth } from '../context/AuthContext'
 import './HomePage.css'
 
-const categoryMap = {
-    'Breaking News': 'breaking',
-    'Popular News':  'popular',
-    'Regional News': 'regional',
-    'Local News':    'local',
-}
-
 function HomePage() {
-    const [allNews, setAllNews]   = useState([])  // raw from API
-    const [news, setNews]         = useState([])  // filtered display
+    const { user }                = useAuth()
+    const [allNews, setAllNews]   = useState([])
+    const [news, setNews]         = useState([])
     const [loading, setLoading]   = useState(true)
     const [error, setError]       = useState('')
-    const [category, setCategory] = useState('Breaking News')
+    const [tabInfo, setTabInfo]   = useState({ tab: 'breaking' })
     const [sidebar, setSidebar]   = useState({})
 
-    // only fetch from API when tab changes
     useEffect(() => {
         fetchNews()
-    }, [category])
+    }, [tabInfo])
 
-    // apply sidebar filters locally whenever sidebar or allNews changes
     useEffect(() => {
         applyFilters(allNews, sidebar)
     }, [sidebar, allNews])
@@ -37,10 +30,25 @@ function HomePage() {
         setLoading(true)
         setError('')
         try {
-            const data = await api.getNews({ q: categoryMap[category] || 'latest' })
+            const params = { tab: tabInfo.tab }
+
+            if (tabInfo.tab === 'regional') {
+                params.region = user?.preferences?.defaultRegion || 'Global'
+            }
+
+            if (tabInfo.tab === 'local' && tabInfo.country) {
+                params.country = tabInfo.country
+            }
+
+            const data = await api.getNews(params)
+
             if (Array.isArray(data)) {
-                setAllNews(data)
-                applyFilters(data, sidebar)
+                // popular: sort by source count
+                const sorted = tabInfo.tab === 'popular'
+                    ? [...data].sort((a, b) => (b.sources?.length || 1) - (a.sources?.length || 1))
+                    : data
+                setAllNews(sorted)
+                applyFilters(sorted, sidebar)
             } else {
                 setError('Failed to load news')
             }
@@ -55,21 +63,18 @@ function HomePage() {
         let filtered = [...articles]
         const now = new Date()
 
-        // type filter
         if (filters['Type']?.length) {
             filtered = filtered.filter((a) =>
                 filters['Type'].includes(a.category)
             )
         }
 
-        // verification status filter
         if (filters['Verification Status']?.length) {
             filtered = filtered.filter((a) =>
                 filters['Verification Status'].includes(a.status)
             )
         }
 
-        // date filter
         if (filters['Date']?.length) {
             filtered = filtered.filter((a) => {
                 const date     = new Date(a.publishedAt)
@@ -81,11 +86,22 @@ function HomePage() {
             })
         }
 
-        setNews(filtered)
-    }
+        // if filter returns too few fetch more
+        if (filtered.length < 3 && filters['Type']?.length) {
+            api.getNews({ q: filters['Type'][0] + ' news' })
+                .then((more) => {
+                    if (Array.isArray(more)) {
+                        const combined = [...articles, ...more]
+                        const unique   = combined.filter((a, i, self) =>
+                            i === self.findIndex((b) => b.headline === a.headline)
+                        )
+                        setAllNews(unique)
+                    }
+                })
+                .catch(() => {})
+        }
 
-    const handleSidebarChange = (filters) => {
-        setSidebar(filters)
+        setNews(filtered)
     }
 
     const hero = news[0] || null
@@ -94,10 +110,10 @@ function HomePage() {
     return (
         <>
             <NavBar />
-            <CategoryTabs onTabChange={setCategory} />
+            <CategoryTabs onTabChange={setTabInfo} />
             <TrendingStrip />
             <div className="hp-body">
-                <Sidebar onFilterChange={handleSidebarChange} />
+                <Sidebar onFilterChange={setSidebar} />
                 <main className="hp-main">
                     {loading && <p className="hp-status">Loading news...</p>}
                     {error   && <p className="hp-error">{error}</p>}

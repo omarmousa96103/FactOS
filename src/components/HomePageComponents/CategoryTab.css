@@ -1,17 +1,24 @@
+.ct-outer {
+    position: relative;
+    background: var(--nav-bg, #fff);
+    border-bottom: 0.5px solid var(--border, #e5e7eb);
+}
+
 .ct-wrap {
     display: flex;
     align-items: center;
-    border-bottom: 0.5px solid #e5e7eb;
     padding: 0 3rem;
-    background: #fff;
     gap: 0;
+    overflow-x: auto;
 }
+
+.ct-wrap::-webkit-scrollbar { display: none; }
 
 .ct-tab {
     font-family: 'Sora', sans-serif;
     font-size: 13px;
     font-weight: 500;
-    color: #6b7280;
+    color: var(--text-secondary, #6b7280);
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
@@ -19,19 +26,68 @@
     cursor: pointer;
     transition: color 0.15s, border-color 0.15s;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.ct-tab:hover { color: #111827; }
+.ct-tab:hover { color: var(--text-primary, #111827); }
 
 .ct-tab.active {
     color: #1D9E75;
     border-bottom: 2px solid #1D9E75;
 }
 
-
-.ct-wrap {
-    background: var(--nav-bg);
-    border-color: var(--border);
+.ct-country-tag {
+    font-size: 10px;
+    font-weight: 500;
+    background: #E1F5EE;
+    color: #085041;
+    padding: 2px 7px;
+    border-radius: 99px;
 }
-.ct-tab { color: var(--text-secondary); }
-.ct-tab:hover { color: var(--text-primary); }
+
+.ct-chevron {
+    font-size: 11px;
+    color: var(--text-muted, #9ca3af);
+}
+
+.ct-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 3rem;
+    background: var(--bg-primary, #fff);
+    border: 0.5px solid var(--border, #e5e7eb);
+    border-radius: 10px;
+    padding: 6px;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    min-width: 360px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.ct-dropdown-item {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary, #374151);
+    background: none;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.ct-dropdown-item:hover {
+    background: var(--bg-secondary, #f9fafb);
+    color: var(--text-primary, #111827);
+}
+
+.ct-dropdown-item.active {
+    background: #E1F5EE;
+    color: #085041;
+}
